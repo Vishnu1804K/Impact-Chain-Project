@@ -1,4 +1,4 @@
-# ImpactChains: Fostering Transparency in Charitable Giving through XDC Blockchain
+# ImpactChain: Fostering Transparency in Charitable Giving through XDC Blockchain
 
 ## Introduction
 In the realm of philanthropy, concerns about transparency and accountability often arise, casting doubt on the authenticity of fund utilization. Blockchain technology emerges as a potential solution to address these challenges, offering immutable records and transparent transactions. ImpactChains leverages the XDC blockchain to revolutionize charitable giving, ensuring donors have full visibility into their contributions' impact.
