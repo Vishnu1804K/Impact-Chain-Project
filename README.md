@@ -1,4 +1,5 @@
 # ImpactChains: Fostering Transparency in Charitable Giving through XDC Blockchain
+![Uploading Screenshot 2024-04-14 104918.png…]()
 
 ## Introduction
 In the realm of philanthropy, concerns about transparency and accountability often arise, casting doubt on the authenticity of fund utilization. Blockchain technology emerges as a potential solution to address these challenges, offering immutable records and transparent transactions. ImpactChains leverages the XDC blockchain to revolutionize charitable giving, ensuring donors have full visibility into their contributions' impact.
@@ -10,6 +11,7 @@ ImpactChains operates on the XDC blockchain, enabling seamless and transparent d
 The project utilized a tech stack comprising Ethereum-based technologies such as Solidity smart contracts, React for frontend development, and Node.js for backend support. Web3.js facilitated seamless interaction with the XDC blockchain, enabling transaction tracking and wallet integration. Rainbow and Metamask wallets ensured secure storage and transfer of XDC tokens, enhancing user experience and security.
 
 ## Challenges Faced
+
 Integrating XDC blockchain into the donation system posed initial challenges, requiring innovative solutions to ensure seamless functionality. Smart contract development using Solidity presented a learning curve, but ultimately facilitated transparent and auditable transactions.
 
 ## Accomplishments
