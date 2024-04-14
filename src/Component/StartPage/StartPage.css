@@ -1,0 +1,80 @@
+.StartPageContainer {
+    background-color: #f0f0f0;
+    padding: 40px;
+    display: flex;
+    height: 80vh;
+  }
+  
+  .Side1 {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .Side1 h1
+  {
+    color: #0056b3;
+  } 
+  .Side2 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Side2 img
+  {
+    position: absolute;
+    height:400px;
+    width:400px;
+  }
+  .Quadrant {
+    width: 200vw; 
+    height: 100vh; 
+    transform: scale(1.3);
+    position: relative;
+    background-color: #007bff;
+    border-radius: 50%; 
+    bottom: -40vh;
+    right: -20vw;
+  }
+  
+
+  .StartPageContainer h2 {
+    font-size: 3rem;
+    color: #0d0d0d;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  .StartPageContainer h1 {
+    font-size: 5rem;
+    color: #007bff;
+    margin-top: -50px;
+    text-align: left;
+  }
+  
+  .StartPageContainer p {
+    font-size: 1.1rem;
+    margin-top: -20px;
+    text-align: left;
+  }
+  
+  .StartPageContainer button {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .StartPageContainer button:hover {
+    background-color: #0056b3;
+  }
+  .Rounder
+  {
+    border-radius:50px;
+  }

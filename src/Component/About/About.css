@@ -1,0 +1,63 @@
+/* About.css */
+
+.AboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.Profiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Profiles > div {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  margin-right: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem; /* Increased padding */
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Profiles > div:hover {
+  transform: translateY(-8px); /* Increased translateY */
+}
+
+.Profiles img {
+  width: 200px; /* Increased width */
+  height: 200px; /* Increased height */
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 2rem; /* Increased margin */
+}
+
+.Profiles h1 {
+  font-size: 2rem; /* Increased font size */
+}
+
+.Profiles h4 {
+  font-size: 1.25rem; /* Increased font size */
+  color: #6c757d;
+  margin-bottom: 2rem; /* Increased margin */
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Increased gap */
+}
+
+.profile .span {
+  font-size: 2.5rem; /* Increased font size */
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.profile .span:hover {
+  color: #0056b3;
+}
