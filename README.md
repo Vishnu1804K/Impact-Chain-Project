@@ -1,5 +1,3 @@
-![ImpactChains Logo](path/to/impactchains_logo.png)
-
 # ImpactChains: Fostering Transparency in Charitable Giving through XDC Blockchain
 
 ## Introduction
