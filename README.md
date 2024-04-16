@@ -16,6 +16,9 @@ Integrating XDC blockchain into the donation system posed initial challenges, re
 ## Accomplishments
 The successful integration of XDC blockchain into ImpactChains marks a significant milestone in promoting transparency and accountability in charitable giving. The platform's robust architecture and user-friendly interface enhance donor trust and confidence.
 
+## Tech Stack
+Blockchain, XDC network, react js, web3.js, Ethereum wallet, metamask wallet, node js, rainbow kit, firebase.
+
 ## Lessons Learned
 The project provided valuable insights into blockchain technology, particularly its application in charitable giving. Solidity smart contract development, XDC blockchain integration, and frontend/backend coordination were key learnings, laying the groundwork for future blockchain projects.
 
