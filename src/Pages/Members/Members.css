@@ -1,0 +1,104 @@
+.MembersContainer {
+    padding: 2rem 0;
+}
+
+.MembersContainer h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.MembersContainer .subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark .MembersContainer .subtitle {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.MembersList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.MemberCard {
+    background-color: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.MemberCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark .MemberCard {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+
+.MemberCard-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.MemberCard-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.MemberCard-info h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.MemberCard-info p {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.MemberCard-stats {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+body.dark .MemberCard-stats {
+    border-top-color: var(--border-dark);
+}
+
+.MemberCard-stat {
+    text-align: center;
+}
+
+.MemberCard-stat .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.MemberCard-stat .label {
+    font-size: 0.875rem;
+    color: #6B7280; /* Gray 500 */
+}
+
+body.dark .MemberCard-stat .label {
+    color: #9CA3AF; /* Gray 400 */
+}
+  

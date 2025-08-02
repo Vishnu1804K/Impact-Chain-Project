@@ -1,79 +1,108 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Typography } from '@mui/material';
-import './SignIn.css'; // Import your CSS file
+import { TextField, Button, Container, Alert, CircularProgress } from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext';
+import './SignIn.css';
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const { signin } = useAuth();
   const [formData, setFormData] = useState({
-    username: '',
     email: '',
     password: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
-    // You can send the formData to your backend or perform any necessary actions
+    setError('');
+
+    try {
+      setLoading(true);
+      await signin(formData.email, formData.password);
+      navigate('/');
+    } catch (error) {
+      setError('Failed to sign in. Please check your credentials.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <Container className="signin-container">
-      <div className="circle-quadrant1">
-        <div>
-        <h1>New Here?</h1>
-        <p>Explore our forums, chat rooms, and collaborative coding spaces.
-          We believe in the power of collaboration, learning, and sharing!</p>
-        <button className='signin-signup'>SignUp</button>
+    <div className="signin-container">
+      <div className="signin-form-container">
+        <div className="circle-quadrant">
+          <div>
+            <h1>Welcome Back!</h1>
+            <p>Ready to continue your journey with ImpactChain?
+              Connect with fellow developers and make a positive impact together!</p>
+            <Link to="/signup">
+              <button className='signin-signup'>Sign Up</button>
+            </Link>
+          </div>
         </div>
+        <form onSubmit={handleSubmit} className="signin-form">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <Link to="/" style={{ textDecoration: 'none', color: '#007bff' }}>
+              ← Back to Home
+            </Link>
+            <h1 style={{ margin: 0 }}>SignIn</h1>
+            <div style={{ width: '100px' }}></div>
+          </div>
+
+          {error && <Alert severity="error" style={{ marginBottom: '15px' }}>{error}</Alert>}
+
+          <TextField
+            label="Email"
+            variant="outlined"
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+            disabled={loading}
+          />
+          <TextField
+            label="Password"
+            variant="outlined"
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+            disabled={loading}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            disabled={loading}
+            style={{ marginTop: '15px' }}
+          >
+            {loading ? <CircularProgress size={24} /> : 'Sign In'}
+          </Button>
+          <div style={{ textAlign: 'center', marginTop: '15px' }}>
+            <span>Don't have an account? </span>
+            <Link to="/signup" style={{ color: '#007bff', textDecoration: 'none' }}>
+              Sign Up
+            </Link>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="signin-form">
-        <h1 style={{marginLeft:'35%'}}>SignIn</h1>
-        <TextField
-          label="Username"
-          variant="outlined"
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Email"
-          variant="outlined"
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          fullWidth
-          margin="normal"
-        />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Sign In
-        </Button>
-      </form>
-    </Container>
+    </div>
   );
 };
 

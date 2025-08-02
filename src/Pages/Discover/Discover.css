@@ -1,0 +1,106 @@
+.DiscoverContainer {
+    padding: 2rem 0;
+}
+
+.DiscoverContainer h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.DiscoverContainer .subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark .DiscoverContainer .subtitle {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.ProjectList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.ProjectCard {
+    background-color: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ProjectCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark .ProjectCard {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+
+.ProjectCard-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.ProjectCard-content {
+    padding: 1.5rem;
+}
+
+.ProjectCard-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ProjectCard-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #6B7280; /* Gray 500 */
+}
+
+body.dark .ProjectCard-content p {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.ProjectCard-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark .ProjectCard-footer {
+    border-top-color: var(--border-dark);
+}
+
+.ProjectCard-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.ProjectCard-cta {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+.ProjectCard-cta:hover {
+    background-color: var(--primary-color-dark);
+}

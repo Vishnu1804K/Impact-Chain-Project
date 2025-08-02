@@ -1,0 +1,88 @@
+/* About.css */
+
+.AboutContainer {
+    padding: 2rem 0;
+}
+
+.AboutContainer h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.AboutContainer .subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark .AboutContainer .subtitle {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.Profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.ProfileCard {
+    background-color: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ProfileCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark .ProfileCard {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+
+.ProfileCard .pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    border: 4px solid var(--primary-color);
+}
+
+.ProfileCard .name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.ProfileCard .role {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.ProfileCard .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.ProfileCard .social-links .span {
+    color: #9CA3AF; /* Gray 400 */
+    transition: color 0.2s ease;
+}
+
+.ProfileCard .social-links .span:hover {
+    color: var(--primary-color);
+}

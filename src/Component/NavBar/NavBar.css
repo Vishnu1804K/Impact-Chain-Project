@@ -1,84 +1,72 @@
 .NavBarContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg-light);
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+}
+
+body.dark .NavBarContainer {
+    background-color: var(--card-bg-dark);
+    border-bottom: 1px solid var(--border-dark);
 }
 
 .NavBarContainer h1 {
-  margin-left: 30px;
-  font-size: 1.7rem;
-  font-weight: bold;
-  color: #212529;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .NavBarContainer h1 span {
-  color: #007bff;
+    color: var(--primary-color);
 }
 
 .NavBarContainer ul {
-  list-style-type: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-.NavBarContainer ul .li {
-  text-decoration: none;
-  color: #212529;
-  font-size: 1.3rem;
-  margin-right: 40px;
-  font-weight: 500;
-  transition: color 0.3s; /* Add transition effect */
+.NavBarContainer .li {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-light);
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
-
-.NavBarContainer ul .li:last-child {
-  margin-right: 0;
+body.dark .NavBarContainer .li {
+    color: var(--text-dark);
 }
 
-.NavBarContainer ul .li a {
-  text-decoration: none;
-  color: #212529;
-  font-size: 18px;
-  font-weight: bold;
+.NavBarContainer .li:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
 }
-
-.NavBarContainer ul .li span:hover{
-  padding: 5px;
-  border-radius: 5px;
-  background-color:#0056b3;
-  color: #f8f9fa;
-}
-
-.NavBarContainer button {
-  text-decoration: none;
-  padding: 10px 20px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Add transition effect */
-}
-
-.NavBarContainer button:hover {
-  background-color: #0056b3; /* Change background color on hover */
-}
-
 
 .NavBarContainer .button {
-  text-decoration: none;
-  padding: 10px 20px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Add transition effect */
+    border-radius: var(--border-radius);
+    padding: 0.6rem 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.NavBarContainer .button:hover {
-  background-color: #0056b3; /* Change background color on hover */
+.NavBarContainer .Rounder {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.NavBarContainer .Rounder:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }

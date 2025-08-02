@@ -1,58 +1,78 @@
 .signin-container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end; /* Align the form to the right */
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    position: relative;
-  }
-  
-  .circle-quadrant1 {
-    position: absolute;
-    top: 0;
-    left: 200px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--background-light);
+}
+
+body.dark .signin-container {
+    background-color: var(--background-dark);
+}
+
+.signin-form-container {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    max-width: 1000px;
     width: 100%;
-    height: 100%;
-    background-color: #0a75a7;
-    z-index: -1;
-    clip-path: circle(80% at 100% 20%);
-  }
-  
-  .circle-quadrant1 div{
-    color: aliceblue;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width:600px;
-   margin-left:500px;
-   margin-top: 70px;
-  }
+    background-color: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
 
-  .circle-quadrant div p
-  {
-   font-size: 1.2rem;
-  }
+body.dark .signin-form-container {
+    background-color: var(--card-bg-dark);
+}
 
-  .signin-form {
-    position: relative;
-    top:100px;
-    left:0%;
+.circle-quadrant {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+    color: white;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: left; /* Align text to the left */
-  }
-  
-  .signin-signup
-  {
-    background-color: transparent;
-    border: 2px solid white;
-    font-size: 1.5rem;
-    padding: 10px;
-    
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-  }
+.circle-quadrant h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.circle-quadrant p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+}
+
+.signin-signup {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.signin-signup:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.signin-form {
+    padding: 2.5rem;
+}
+
+.signin-form h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+body.dark .signin-form h1 {
+    color: var(--text-dark);
+}

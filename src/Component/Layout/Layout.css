@@ -1,0 +1,24 @@
+.LayoutContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.MainContent {
+  flex: 1;
+  padding: 2rem; /* Consistent padding */
+  width: 100%;
+  max-width: 1280px; /* Max width for large screens */
+  margin: 0 auto; /* Center content */
+}
+
+/* Dark mode styles for Layout */
+.LayoutContainer.dark {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+.LayoutContainer.light {
+  background-color: var(--background-light);
+  color: var(--text-light);
+} 

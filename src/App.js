@@ -1,73 +1,79 @@
-import React,{createContext, useState} from 'react';
-import {  Routes,Route} from "react-router-dom";
+import React, { createContext, useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import './App.css';
-import About from './Component/About/About';
-import NavBar from './Component/NavBar/NavBar';
-import StartPage from './Component/StartPage/StartPage';
-import Home from './Pages/Home/Home';
-import Settings from './Pages/Settings/Settings.jsx'
-import Members from './Component/Members/Members.jsx';
-import SignUp from './Pages/SignUp/SignUp.jsx';
-import SignIn from './Pages/SignIn/SignIn.jsx';
-import EmptyPage from './Component/EmptyPage/EmptyPage.jsx';
-import Discover from './Component/Discover/Discover.jsx';
-import Donate from './Component/Donate/Donate.jsx';
-import Contribution from './Component/Contribution/Contribution.jsx';
+
+// Firebase Auth Provider
+import { AuthProvider } from './Context/AuthContext';
+
+// Page components
+import StartPage from './Pages/StartPage/StartPage';
+import About from './Pages/About/About';
+import Discover from './Pages/Discover/Discover';
+import Donate from './Pages/Donate/Donate';
+import Contribution from './Pages/Contribution/Contribution';
+import Members from './Pages/Members/Members';
+import Settings from './Pages/Settings/Settings';
+import SignUp from './Pages/SignUp/SignUp';
+import SignIn from './Pages/SignIn/SignIn';
+
+// Layout and shared components
+import Layout from './Component/Layout/Layout';
+import EmptyPage from './Component/EmptyPage/EmptyPage';
+import ProtectedRoute from './Component/ProtectedRoute/ProtectedRoute';
+
 const DarkTheme = createContext();
-import '@rainbow-me/rainbowkit/styles.css';
-import {
-  getDefaultConfig,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
-import { WagmiProvider } from 'wagmi';
-import {
-  xdcTestnet
-} from 'wagmi/chains';
-import {
-  QueryClientProvider,
-  QueryClient,
-} from "@tanstack/react-query";
-
-
-const config = getDefaultConfig({
-  appName: 'ImpactChain',
-  projectId: 'd3e35f23d411437a509bcb2a47175bd3',
-  chains: [xdcTestnet],
-});
-
-const queryClient = new QueryClient();
 
 function App() {
-  const [darkMode,setDarkMode] = useState(false);
-  
-  const handleDarkMode = ()=>{
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkMode = () => {
     setDarkMode(!darkMode);
-  }
+  };
+
+  // Add a side effect to update the body class
+  React.useEffect(() => {
+    document.body.classList.toggle('dark', darkMode);
+  }, [darkMode]);
 
   return (
     <div className="App">
-      <WagmiProvider config = {config}>
-      <QueryClientProvider client = {queryClient}>
-        <RainbowKitProvider>
-        <DarkTheme.Provider value={{darkMode,handleDarkMode}}>
-        {/* Donot Distrub */}
-       
+      <AuthProvider>
+        <DarkTheme.Provider value={{ darkMode, handleDarkMode }}>
           <Routes>
-            <Route path="/About" element={<Home><About/></Home>}/>
-            <Route path="/StartPage" element={<Home><StartPage/></Home>} exact/>
-            <Route path="/Discover" element={<Home><Discover/></Home>} />
-            <Route path="/Donate" element={<Home><Donate/></Home>}/>
-            <Route path="/Contribution" element={<Home><Contribution/></Home>} />
-          </Routes>
+            {/* Home route - shows StartPage */}
+            <Route path="/" element={<Layout><StartPage /></Layout>} />
+            <Route path="/home" element={<Layout><StartPage /></Layout>} />
 
-       {/* Donot Distrub */}
-      </DarkTheme.Provider>
-        </RainbowKitProvider>
-      </QueryClientProvider>
-      </WagmiProvider>
+            {/* Main navigation routes */}
+            <Route path="/about" element={<Layout><About /></Layout>} />
+            <Route path="/discover" element={<Layout><Discover /></Layout>} />
+            <Route path="/contribution" element={<Layout><Contribution /></Layout>} />
+            <Route path="/donate" element={<Layout><Donate /></Layout>} />
+
+            {/* Protected user management routes */}
+            <Route path="/members" element={
+              <ProtectedRoute>
+                <Layout><Members /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <Layout><Settings /></Layout>
+              </ProtectedRoute>
+            } />
+
+            {/* Authentication routes - no layout (standalone pages) */}
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+
+            {/* Catch-all route for 404 */}
+            <Route path="*" element={<EmptyPage />} />
+          </Routes>
+        </DarkTheme.Provider>
+      </AuthProvider>
     </div>
   );
 }
 
 export default App;
-export {DarkTheme};
+export { DarkTheme };

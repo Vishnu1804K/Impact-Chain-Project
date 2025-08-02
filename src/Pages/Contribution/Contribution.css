@@ -1,0 +1,86 @@
+/* Contribution.css */
+
+.ContributionContainer {
+    padding: 2rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.ContributionContainer h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.ContributionContainer .subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark .ContributionContainer .subtitle {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.ContributionList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ContributionCard {
+    background-color: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+body.dark .ContributionCard {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-dark);
+}
+
+.ContributionCard-icon {
+    background-color: var(--primary-color);
+    color: white;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ContributionCard-content h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.ContributionCard-content p {
+    font-size: 1rem;
+    color: #6B7280; /* Gray 500 */
+}
+
+body.dark .ContributionCard-content p {
+    color: #9CA3AF; /* Gray 400 */
+}
+
+.ContributionCard-meta {
+    margin-left: auto;
+    text-align: right;
+    font-size: 0.875rem;
+    color: #6B7280; /* Gray 500 */
+}
+
+body.dark .ContributionCard-meta {
+    color: #9CA3AF; /* Gray 400 */
+}

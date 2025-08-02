@@ -1,55 +1,120 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, Avatar, Menu, MenuItem, Typography } from '@mui/material';
 import BrightnessHighIcon from '@mui/icons-material/BrightnessHigh';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { DarkTheme } from '../../App';
+import { useAuth } from '../../Context/AuthContext';
 import "./NavBar.css";
 
 const NavBar = () => {
   const darkModeData = useContext(DarkTheme);
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleUserMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      handleUserMenuClose();
+      navigate('/');
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
+  };
 
   const containerStyle = darkModeData.darkMode
     ? { backgroundColor: '#333', color: '#fff' }
     : { backgroundColor: '#fff', color: '#333' };
 
   const linkStyle = darkModeData.darkMode
-    ? { color: 'inherit', ':hover': { color: '#ffee00' } }
-    : { color: 'inherit', ':hover': { color: '#007bff' } };
-
-  const buttonStyle = darkModeData.darkMode
-    ? { backgroundColor: '#ffee00', color: '#333' }
-    : { backgroundColor: '#007bff', color: '#fff' };
+    ? { color: 'inherit', textDecoration: 'none' }
+    : { color: 'inherit', textDecoration: 'none' };
 
   return (
     <div className="NavBarContainer" style={containerStyle}>
-     <h1 style={{ color: darkModeData.darkMode ? 'white' : '' }}>
-  Impact<span style={{ color: darkModeData.darkMode ? '#007bff' : '#007bff' }}>Chain</span>
-</h1>
+      <h1 style={{ color: darkModeData.darkMode ? 'white' : '' }}>
+        <Link to="/" style={linkStyle}>
+          Impact<span style={{ color: '#007bff' }}>Chain</span>
+        </Link>
+      </h1>
       <ul>
-        <Link to="/StartPage" className="li" style={linkStyle}>
-         <span>Home</span> 
+        <Link to="/home" className="li" style={linkStyle}>
+          <span>Home</span>
         </Link>
-        <Link to="/About" className="li" style={linkStyle}>
-        <span> About</span> 
+        <Link to="/about" className="li" style={linkStyle}>
+          <span>About</span>
         </Link>
-        <Link to="/Discover" className="li" style={linkStyle}>
-          <span> Discover</span> 
+        <Link to="/discover" className="li" style={linkStyle}>
+          <span>Discover</span>
         </Link>
-        <Link to="/Contribution" className="li" style={linkStyle}>
-          <span> Contribution</span> 
+        <Link to="/contribution" className="li" style={linkStyle}>
+          <span>Contribution</span>
         </Link>
-        <Link to="/StartPage" className="li" style={linkStyle}>
-          <span> Impact</span> 
+        <Link to="/members" className="li" style={linkStyle}>
+          <span>Members</span>
         </Link>
       </ul>
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         <button
-          style={{ color: "#ffee00", backgroundColor: 'transparent' ,position:'absolute',right:'130px',marginTop:'-12px'}}
+          style={{ backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}
           onClick={darkModeData.handleDarkMode}
         >
-          {darkModeData.darkMode ? <BrightnessHighIcon /> : <DarkModeIcon style={{color:'grey'}}/>}
+          {darkModeData.darkMode ?
+            <BrightnessHighIcon style={{ color: "#ffee00" }} /> :
+            <DarkModeIcon style={{ color: 'grey' }} />
+          }
         </button>
-        <Link to="/Donate" className="button Rounder" >Donate</Link>
+
+        <Link to="/donate" className="button Rounder" style={linkStyle}>
+          Donate
+        </Link>
+
+        {currentUser ? (
+          <div>
+            <Button
+              onClick={handleUserMenuClick}
+              style={{ color: darkModeData.darkMode ? 'white' : '#333' }}
+              startIcon={<AccountCircleIcon />}
+            >
+              {currentUser.displayName || currentUser.email}
+            </Button>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleUserMenuClose}
+            >
+              <MenuItem onClick={() => { handleUserMenuClose(); navigate('/settings'); }}>
+                Settings
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>
+                Logout
+              </MenuItem>
+            </Menu>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link to="/signin" style={{ textDecoration: 'none' }}>
+              <Button variant="outlined" size="small">
+                Sign In
+              </Button>
+            </Link>
+            <Link to="/signup" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" size="small">
+                Sign Up
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
